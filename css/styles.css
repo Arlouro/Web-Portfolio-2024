@@ -9,5 +9,179 @@
   --danger-color: #dc3545;
   
   --background-color: #E9E9E9;
-  --text-color: #F9F9F9;
+  --text-color: #001219;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: Roboto, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Navbar ----------------------------------------------- */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: var(--primary-color) 2px solid;
+  padding: 1rem 2rem;
+
+  background-color: var(--background-color);
+
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+nav a:focus {
+  color: var(--primary-color);
+}
+
+/* Hero ------------------------------------------------ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.intro-card {
+  background-color: var(--background-color);
+  padding: 2.5rem;
+  width: 500px;
+  height: 500px;
+}
+
+.intro-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.intro-card p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+/* About ----------------------------------------------- */
+#about {
+  min-height: 100vh;
+  padding: 5% 10%;
+}
+
+/* Projects -------------------------------------------- */
+#projects {
+  min-height: 100vh;
+  padding: 5% 10%;
+}
+
+/*! -----------------------------------*/
+.turntable {
+  width: 400px;
+  height: 400px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  position: relative;
+  padding: 2rem;
+}
+
+.vinyl {
+  width: 300px;
+  height: 300px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  position: relative;
+}
+
+.vinyl::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+}
+/*! -----------------------------------*/
+
+.projects-title {
+  margin-left: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.projects-title::before,
+.projects-title::after {
+  content: '';
+  height: 2px;
+  width: 50px;
+  background-color: var(--text-color);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: var(--warning-color);
+  height: 200px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
 }
