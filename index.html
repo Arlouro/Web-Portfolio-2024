@@ -1,86 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Portfolio 2024</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>André Louro - Software Developer & UX/UI Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-content">
-        <div class="logo">
-            <lord-icon
-                src="https://cdn.lordicon.com/rttuqdqs.json"
-                trigger="hover"
-                colors="primary:#005F73,secondary:#FB8500,tertiary:#F9A826,quaternary:#001219"
-                style="width:60px;height:60px">
-            </lord-icon>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="vinyl-mini"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-        </ul>
+    </nav>
+
+    <div class="body-content">
+        <section id="hero" class="section hero">
+            <div class="intro-card">
+                <div class="personal-info">
+                    <h1>André Louro</h1>
+                    <div class="roles">
+                        <p class="role">Software Developer</p>
+                        <p class="role">UX/UI Designer</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Arlouro" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/andre-louro/" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:andrelouro02@gmail.com" class="social-link" target="_blank" rel="noopener">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="vinyl">
+                <div class="vinyl-label">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Your about content here...</p>
+                <div class="skills">
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <ul class="skill-list">
+                            <li>C</li>
+                            <li>C++</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Design</h3>
+                        <ul class="skill-list">
+                            <li>UI/UX</li>
+                            <li>Figma</li>
+                            <li>Design Systems</li>
+                            <li>Affinity Publisher<li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="turntable-container">
+                <div class="turntable">
+                    <div class="tonearm"></div>
+                    <div class="vinyl">
+                        <div class="vinyl-label">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2>Projects</h2>
+            <div id="project-grid" class="project-grid">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </section>
     </div>
-</nav>
 
-<section id="hero" class="hero">
-    <div class="intro-card">
-        <div class="personal-info">
-            <h1>André Louro</h1>
-            <p>Software Developer</p>
-            <p>UX/UI Designer</p>
-        </div>
-        <div class="social-links">
-            <a href="https://github.com/Arlouro" class="social-link" target="_blank" rel="noopener">
-                <lord-icon
-                    src="https://cdn.lordicon.com/ubpgwkmy.json"
-                    trigger="hover"
-                    colors="primary:#005F73,secondary:#FB8500"
-                    style="width:40px;height:40px">
-                </lord-icon>
-            </a>
-            <a href="https://www.linkedin.com/in/andre-louro/" class="social-link" target="_blank" rel="noopener">
-                <lord-icon
-                    src="https://cdn.lordicon.com/mgampcwp.json"
-                    trigger="hover"
-                    state="hover-draw"
-                    colors="primary:#005F73,secondary:#FB8500"
-                    style="width:40px;height:40px">
-                </lord-icon>
-            </a>
-            <a href="mailto:andrelouro02@gmail.com" class="social-link" target="_blank" rel="noopener">
-                <lord-icon
-                    src="https://cdn.lordicon.com/tmqaflqo.json"
-                    trigger="hover"
-                    colors="primary:#005F73,secondary:#FB8500"
-                    style="width:60px;height:60px">
-                </lord-icon>
-            </a>
-        </div>
-    </div>
-</section>
+    <footer>
+        <p>© 2024 André Louro</p>
+        <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-music"></i></p>
+    </footer>
 
-<section id="projects" class="projects">
-    <div class="turntable">
-        <div class="vinyl"></div>
-    </div>
-    <div class="project-grid">
-        <article class="project-card">Project 1</article>
-        <article class="project-card">Project 2</article>
-        <article class="project-card">Project 3</article>
-        <article class="project-card">Project 4</article>
-    </div>
-</section>
-
-<footer class="footer">
-    <p>© 2024 André Louro</p>
-    <p>Icons made by <a href="https://lordicon.com/">Icons by Lordicon.com</a></p>
-</footer>
-
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
-<script src="js/main.js"></script>
-
+    <script src="scripts.js"></script>
 </body>
 </html>
