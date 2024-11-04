@@ -40,7 +40,7 @@ function createProjectCard(project) {
         <div class="project-content">
             <p>${project.description}</p>
             <div class="project-technologies">
-                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                ${project.technologies.map(tech => `<span class="tech-tag">|${tech}|</span>`).join('')}
             </div>
             <div class="project-links">
                 <a href="${project.github}" target="_blank" rel="noopener">
@@ -65,25 +65,15 @@ function createProjectCard(project) {
     return card;
 }
 
-// Function to load projects with intersection observer for lazy loading
 function loadProjects() {
     const projectGrid = document.getElementById('project-grid');
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                projects.forEach(project => {
-                    const card = createProjectCard(project);
-                    projectGrid.appendChild(card);
-                    // Add fade-in animation
-                    card.style.animation = 'fadeIn 0.5s ease-out forwards';
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    observer.observe(projectGrid);
+    projects.forEach(project => {
+        const card = createProjectCard(project);
+        projectGrid.appendChild(card);
+        // Add fade-in animation
+        card.style.animation = 'fadeIn 0.5s ease-out forwards';
+    });
 }
 
 // Smooth scrolling for navigation
@@ -101,7 +91,6 @@ function initVinylAnimations() {
     const tonearm = document.querySelector('.tonearm');
     const vinyl = document.querySelector('.vinyl');
 
-    // Add tonearm animation when vinyl is clicked
     vinyl.addEventListener('click', () => {
         tonearm.classList.add('playing');
         vinyl.style.animation = 'rotate 20s linear infinite';

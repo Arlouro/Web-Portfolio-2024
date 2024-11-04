@@ -207,6 +207,11 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
 }
 
 .project-grid {
@@ -217,11 +222,46 @@ body {
 }
 
 .project-vinyl {
-  width: 100%;
-  padding-top: 100%;
   position: relative;
-  background: var(--vinyl-black);
-  transition: transform 0.5s ease;
+  width: 80%;
+  aspect-ratio: 1;
+  background: repeating-radial-gradient(
+      circle at 50%,
+      var(--vinyl-black) 0,
+      var(--vinyl-black) 4px,
+      var(--vinyl-groove) 5px,
+      var(--vinyl-groove) 6px
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease-out;
+}
+
+.project-vinyl-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  background: var(--record-label);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  color: var(--primary-color-dark);
+  margin-top: var(--spacing-md);
 }
 
 .project-content {
@@ -273,6 +313,7 @@ body {
   font-weight: bold;
   color: white;
   text-transform: uppercase;
+  text-align: center;
 }
 
 /* Tonearm styles */
@@ -302,6 +343,18 @@ body {
 
 .tonearm.playing {
   transform: rotate(0deg);
+}
+
+/* Footer ------------------------------------------ */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-lg) 5%;
+  text-align: center;
+}
+
+footer p {
+  font-size: var(--font-size-sm);
 }
 
 /*! -------------------------------------- !*/
