@@ -1,4 +1,3 @@
-// Project Data
 const projects = [
     {
         title: "Music Streaming App",
@@ -23,18 +22,24 @@ const projects = [
         role: "Full Stack Developer",
         technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
         link: "https://github.com/project3"
+    },
+    {
+        title: "Social Media App",
+        image: "/api/placeholder/400/400",
+        description: "A social media platform with real-time messaging and notifications.",
+        role: "Full Stack Developer",
+        technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+        link: ""
     }
 ];
 
 let currentProjectIndex = 0;
 let isPlaying = false;
 
-// DOM Elements
 const projectsSection = document.getElementById('projects');
 const vinyl = document.querySelector('.vinyl');
 const needle = document.querySelector('.needle');
 
-// Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     createProjectsContainer();
@@ -42,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
-// Navigation Setup
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -63,7 +67,6 @@ function setupNavigation() {
     });
 }
 
-// Create Projects Container
 function createProjectsContainer() {
     const projectsContainer = document.createElement('div');
     projectsContainer.className = 'music-player';
@@ -102,7 +105,6 @@ function createProjectsContainer() {
     projectsSection.appendChild(projectsContainer);
 }
 
-// Update Project Display
 function updateProjectDisplay() {
     const project = projects[currentProjectIndex];
     
@@ -112,7 +114,6 @@ function updateProjectDisplay() {
     document.getElementById('project-description').textContent = project.description;
     document.getElementById('project-link').href = project.link;
     
-    // Update technologies
     const techContainer = document.getElementById('project-tech');
     techContainer.innerHTML = project.technologies.map(tech => 
         `<span class="tech-tag">${tech}</span>`
@@ -121,20 +122,17 @@ function updateProjectDisplay() {
 
 // Setup Event Listeners
 function setupEventListeners() {
-    // Play Button
     const playBtn = document.getElementById('playBtn');
     playBtn.addEventListener('click', () => {
         isPlaying = !isPlaying;
         vinyl.classList.toggle('playing');
         needle.classList.toggle('playing');
         
-        // Update play button icon
         playBtn.innerHTML = isPlaying ? 
             '<i class="fas fa-pause"></i>' : 
             '<i class="fas fa-play"></i>';
     });
     
-    // Previous Button
     document.getElementById('prevBtn').addEventListener('click', () => {
         currentProjectIndex = (currentProjectIndex === 0) ? 
             projects.length - 1 : 
@@ -142,7 +140,6 @@ function setupEventListeners() {
         updateProjectDisplay();
     });
     
-    // Next Button
     document.getElementById('nextBtn').addEventListener('click', () => {
         currentProjectIndex = (currentProjectIndex === projects.length - 1) ? 
             0 : 
@@ -150,3 +147,31 @@ function setupEventListeners() {
         updateProjectDisplay();
     });
 }
+
+// Hamburger Menu Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navRight = document.querySelector('.nav-right');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navRight.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navRight.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navRight.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navRight.classList.remove('active');
+        }
+    });
+});
