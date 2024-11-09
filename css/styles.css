@@ -81,6 +81,36 @@ main {
   gap: 2rem;
 }
 
+.quotes-container {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quote-wrapper {
+  max-width: 600px;
+  padding: 2rem;
+  background: var(--primary-bg);
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px var(--shadow-dark),
+              -5px -5px 10px var(--shadow-light);
+}
+
+.quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.quote-author {
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
 .vinyl-container {
   position: relative;
   width: 300px;
@@ -316,7 +346,7 @@ main {
   font-size: 0.9rem;
 }
 
-/* About Section */
+/* About Section ------------------------------------ */
 .about-container {
   max-width: 800px;
   margin: 0 auto;
@@ -416,13 +446,26 @@ footer i {
 }
 
 /* Animations -------------------------------------- */
-@keyframes spin {
-  from {
-      transform: rotate(0deg);
-  }
-  to {
-      transform: rotate(360deg);
-  }
+
+/* Fade in/out animation */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+/* Refresh button animation */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotating {
+  animation: rotate 1s linear;
 }
 
 @keyframes vinylAppear {

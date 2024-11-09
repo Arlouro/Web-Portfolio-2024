@@ -155,6 +155,110 @@ function togglePlay(event) {
     }
 }
 
+// Quotes Functionality ############################################
+const QUOTES_API = 'https://api.quotable.io/random';
+
+const fallbackQuotes = [
+    {
+        content: "Design is not just what it looks like and feels like. Design is how it works.",
+        author: "Steve Jobs"
+    },
+    {
+        content: "Simplicity is the ultimate sophistication.",
+        author: "Leonardo da Vinci"
+    }
+];
+
+function initializeQuotes() {
+    const quotesContainer = document.querySelector('.quotes-container');
+    if (!quotesContainer) return;
+    
+    quotesContainer.innerHTML = `
+        <div class="quote-wrapper">
+            <p id="quote" class="quote"></p>
+            <p id="quote-author" class="quote-author"></p>
+        </div>
+        <button id="refresh-quote" class="control-btn">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+    `;
+}
+
+async function fetchQuote(retries = 3) {
+    try {
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch(QUOTES_API);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return {
+                    quote: data.content,
+                    author: data.author
+                };
+            } catch (error) {
+                console.warn(`Attempt ${i + 1} failed:`, error);
+                if (i === retries - 1) {
+                    const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+                    return {
+                        quote: randomFallback.content,
+                        author: randomFallback.author
+                    };
+                }
+                await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching quote:', error);
+        const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+        return {
+            quote: randomFallback.content,
+            author: randomFallback.author
+        };
+    }
+}
+
+function displayQuote(quoteData) {
+    const quoteElement = document.getElementById('quote');
+    const authorElement = document.getElementById('quote-author');
+    
+    if (!quoteElement || !authorElement) return;
+
+    quoteElement.classList.add('fade-out');
+    authorElement.classList.add('fade-out');
+
+    setTimeout(() => {
+        quoteElement.textContent = `"${quoteData.quote}"`;
+        authorElement.textContent = `- ${quoteData.author}`;
+        
+        quoteElement.classList.remove('fade-out');
+        authorElement.classList.remove('fade-out');
+        quoteElement.classList.add('fade-in');
+        authorElement.classList.add('fade-in');
+    }, 300);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    initializeQuotes();
+    
+    const quoteData = await fetchQuote();
+    displayQuote(quoteData);
+
+    const refreshButton = document.getElementById('refresh-quote');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', async () => {
+            refreshButton.classList.add('rotating');
+            const newQuote = await fetchQuote();
+            displayQuote(newQuote);
+            setTimeout(() => {
+                refreshButton.classList.remove('rotating');
+            }, 1000);
+        });
+    }
+});
 
 // Event Listeners ############################################
 function setupEventListeners() {
