@@ -1,34 +1,47 @@
 const projects = [
     {
-        title: "Music Streaming App",
-        image: "/api/placeholder/400/400",
-        description: "A modern music streaming platform built with focus on user experience and performance.",
-        role: "Frontend Developer",
-        technologies: ["HTML5", "CSS3", "JavaScript", "React"],
+        title: "QrkUp Software",
+        image: "./assets/images/qrkup-software.png",
+        description: "QrkUp Software is a website developed for a Software Engineering class, designed to streamline the quiz and test creation process for educators. This platform empowers students to contribute by submitting their own questions, which are then reviewed by a panel of three peers before approval and integration into official tests. Additionally, the platform allows students to solve these tests online, providing a comprehensive and efficient solution for both test creation and administration.",
+        role: "Team Lead & UX/UI Designer & Frontend Developer",
+        technologies: ["HTML5", "CSS", "JavaScript", "React", "Figma"],
+        status: "Finished",
         link: "https://github.com/project1"
     },
     {
-        title: "E-commerce Platform",
-        image: "/api/placeholder/400/400",
-        description: "Full-stack e-commerce solution with real-time inventory management.",
-        role: "Backend Developer",
-        technologies: ["Node.js", "Express", "MongoDB", "Redis"],
+        title: "MuscleUp!",
+        image: "./assets/images/muscleup.png",
+        description: "MuscleUp! is a software developed during the ShiftAppens 2024 hackathon, designed to revolutionize workout efficiency and minimize injuries. This innovative tool harnesses advanced computer vision and AI algorithms to track the user's movements, accurately count repetitions, and identify potential risks such as excessive loads and suboptimal training plans.",
+        role: "UX/UI Designer",
+        technologies: ["Figma", "Adobe XD", "React", "Ruby on Rails"],
+        status: "Finished",
         link: "https://github.com/project2"
     },
     {
-        title: "Portfolio Generator",
-        image: "/api/placeholder/400/400",
-        description: "Dynamic portfolio creation tool for developers.",
-        role: "Full Stack Developer",
-        technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
+        title: "Googol",
+        image: "./assets/images/googol-software.png",
+        description: "Googol is a search engine developed for the Distributed Systems class. This project involved creating a responsive search engine capable of indexing links and searching for terms, words, and links within the indexed content. It also allows managing performance metrics such as active barrels and top searches. The search results display links with brief descriptions and provide quick definitions of searched words or terms using a generative AI API.",
+        role: "Full Stack Developer & UX/UI Designer",
+        technologies: ["JavaScript", "Java", "SpringBoot", "RestAPI", "HTML5", "CSS"],
+        status: "Finished",
         link: "https://github.com/project3"
     },
     {
-        title: "Social Media App",
+        title: "./assets/images/badge-master.png",
         image: "/api/placeholder/400/400",
-        description: "A social media platform with real-time messaging and notifications.",
-        role: "Full Stack Developer",
-        technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+        description: "Badge Master is a conceptual software developed for the Management and Innovation Processes class, aimed at solving the challenges of credentialization and access granting at large events. For this project, I independently designed the interface in under a week to ensure a functional mockup was ready for the presentation. The design needed to be simple and easy to use, while also meeting the specific requirements imposed by the target users.",
+        role: "UX/UI Designer",
+        technologies: ["React", "JavaScript", "HTML5", "CSS", "Figma"],
+        status: "Finished",
+        link: ""
+    },
+    {
+        title: "Canoe Manager",
+        image: "./assets/images/canoe-manager.png",
+        description: "Canoe Manager is a software developed for the Software Engineering class, designed to streamline the process of managing canoe trips and rentals. This platform allows users to browse available canoes, check availability, and reserve canoes for specific dates. It also provides a comprehensive overview of the available canoes, their specifications, and the current status of each canoe.",
+        role: "UX/UI Designer & Frontend Developer",
+        technologies: ["React", "JavaScript", "NextJS","HTML5", "CSS", "Figma"],
+        status: "In Progress",
         link: ""
     }
 ];
@@ -47,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
+// Navigation Functionality ############################################
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -67,6 +81,7 @@ function setupNavigation() {
     });
 }
 
+// Project Display Functionality ############################################
 function createProjectsContainer() {
     const projectsContainer = document.createElement('div');
     projectsContainer.className = 'music-player';
@@ -120,8 +135,30 @@ function updateProjectDisplay() {
     ).join('');
 }
 
-// Setup Event Listeners
+// Vinyl Player Functionality ############################################
+function togglePlay(event) {
+    event.stopPropagation();
+    isPlaying = !isPlaying;
+    
+    if (isPlaying) {
+        vinyl.classList.add('playing');
+        needle.classList.add('playing');
+    } else {
+        vinyl.classList.remove('playing');
+        needle.classList.remove('playing');
+        
+        const stopTransition = () => {
+            vinyl.style.transform = 'rotate(0deg)';
+            vinyl.removeEventListener('animationiteration', stopTransition);
+        };
+        vinyl.addEventListener('animationiteration', stopTransition);
+    }
+}
+
+
+// Event Listeners ############################################
 function setupEventListeners() {
+    // Project Navigation -----------------------------------
     const playBtn = document.getElementById('playBtn');
     playBtn.addEventListener('click', () => {
         isPlaying = !isPlaying;
@@ -146,10 +183,25 @@ function setupEventListeners() {
             currentProjectIndex + 1;
         updateProjectDisplay();
     });
-}
 
-// Hamburger Menu Functionality
-document.addEventListener('DOMContentLoaded', () => {
+    // Vinyl Player -----------------------------------
+    vinyl.addEventListener('click', togglePlay);
+    needle.addEventListener('click', togglePlay);
+
+    const vinylContainer = document.querySelector('.vinyl-container');
+    vinylContainer.addEventListener('mouseenter', () => {
+        if (!isPlaying) {
+            needle.style.transform = 'rotate(35deg)';
+        }
+    });
+
+    vinylContainer.addEventListener('mouseleave', () => {
+        if (!isPlaying) {
+            needle.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Hamburger Menu -----------------------------------
     const hamburger = document.querySelector('.hamburger');
     const navRight = document.querySelector('.nav-right');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -159,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navRight.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -167,11 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navRight.contains(e.target) && !hamburger.contains(e.target)) {
             hamburger.classList.remove('active');
             navRight.classList.remove('active');
         }
     });
-});
+}
