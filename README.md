@@ -9,3 +9,12 @@ This is a web portfolio for the year 2024. It is a simple website that showcases
 - HTML
 - CSS
 - JavaScript
+
+## Things to do
+
+- fix the repeated code for the vinyl records
+- remake initial card design
+- add a contact form
+- associate logos to the projects
+- implement a dark mode
+- implement parallax effect

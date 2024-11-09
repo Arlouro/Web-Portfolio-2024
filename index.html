@@ -3,106 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!--! REMOVE BEFORE SUBMITTING !-->
     <meta http-equiv='cache-control' content='no-cache'> 
     <meta http-equiv='expires' content='0'> 
     <meta http-equiv='pragma' content='no-cache'>
     <!--! ------------------------ !-->
 
-    <title>André Louro - Software Developer & UX/UI Designer</title>
-    
+    <title>Vinyl Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="logo">
-                <div class="vinyl-mini"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#hero" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+    <nav class="navigation">
+        <div class="nav-left">
+            <h1>Vinyl Portfolio</h1>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
             </ul>
         </div>
-    </nav>
+    </nav>    
 
-    <div class="body-content">
-        <section id="hero" class="section hero">
-            <div class="intro-card">
-                <div class="personal-info">
-                    <h1>André Louro</h1>
-                    <div class="roles">
-                        <p class="role">Software Developer</p>
-                        <p class="role">UX/UI Designer</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/Arlouro" class="social-link" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/andre-louro/" class="social-link" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:andrelouro02@gmail.com" class="social-link" target="_blank" rel="noopener">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section about">
-            <div class="about-content">
-                <h2>About Me</h2>
-                <p>Your about content here...</p>
-                <div class="skills">
-                    <div class="skill-category">
-                        <h3>Programming</h3>
-                        <ul class="skill-list">
-                            <li>C</li>
-                            <li>C++</li>
-                            <li>Python</li>
-                            <li>Java</li>
-                            <li>HTML5</li>
-                            <li>CSS3</li>
-                            <li>JavaScript</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Design</h3>
-                        <ul class="skill-list">
-                            <li>UI/UX</li>
-                            <li>Figma</li>
-                            <li>Design Systems</li>
-                            <li>Affinity Publisher<li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section projects">
-            <div class="turntable-container">
-                <div class="turntable">
-                    <div class="tonearm"></div>
+    <main>
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="vinyl-container">
                     <div class="vinyl">
-                        <div class="vinyl-label">
+                        <div class="vinyl-lines"></div>
+                        <div class="center-hole"></div>
+                    </div>
+                    <div class="needle">
+                        <div class="needle-arm"></div>
+                        <div class="needle-tip"></div>
+                        <div class="needle-base"></div>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <h2>Welcome to My Portfolio</h2>
+                    <p>Frontend Developer & Digital Artist</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="projects-container">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>I'm a passionate developer who loves creating beautiful and functional web experiences. Just like a vinyl record brings music to life, I bring ideas to life through code.</p>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <h2>Projects</h2>
-            <div id="project-grid" class="project-grid">
-                <!-- Projects will be loaded dynamically -->
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-container">
+                <h2>Get in Touch</h2>
+                <div class="social-links">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:your.email@example.com" class="social-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
             </div>
         </section>
-    </div>
+    </main>
 
-    <footer>
-        <p>© 2024 André Louro</p>
-        <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-music"></i></p>
-    </footer>
     <script src="js/scripts.js"></script>
 </body>
 </html>
