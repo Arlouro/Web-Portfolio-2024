@@ -28,7 +28,7 @@ const projects = [
     },
     {
         title: "./assets/images/badge-master.png",
-        image: "/api/placeholder/400/400",
+        image: "./assets/images/badge-master.png",
         description: "Badge Master is a conceptual software developed for the Management and Innovation Processes class, aimed at solving the challenges of credentialization and access granting at large events. For this project, I independently designed the interface in under a week to ensure a functional mockup was ready for the presentation. The design needed to be simple and easy to use, while also meeting the specific requirements imposed by the target users.",
         role: "UX/UI Designer",
         technologies: ["React", "JavaScript", "HTML5", "CSS", "Figma"],
@@ -166,6 +166,18 @@ const fallbackQuotes = [
     {
         content: "Simplicity is the ultimate sophistication.",
         author: "Leonardo da Vinci"
+    },
+    {
+        content: "Good design is obvious. Great design is transparent.",
+        author: "Joe Sparano"
+    },
+    {
+        content: "Design adds value faster than it adds costs.",
+        author: "Joel Spolsky"
+    },
+    {
+        content: "The details are not the details. They make the design.",
+        author: "Charles Eames"
     }
 ];
 
@@ -184,41 +196,33 @@ function initializeQuotes() {
     `;
 }
 
-async function fetchQuote(retries = 3) {
+async function fetchQuote(retries = 2) {
     try {
-        for (let i = 0; i < retries; i++) {
-            try {
-                const response = await fetch(QUOTES_API);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                return {
-                    quote: data.content,
-                    author: data.author
-                };
-            } catch (error) {
-                console.warn(`Attempt ${i + 1} failed:`, error);
-                if (i === retries - 1) {
-                    const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
-                    return {
-                        quote: randomFallback.content,
-                        author: randomFallback.author
-                    };
-                }
-                await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+        const httpsUrl = 'https://api.quotable.io/random';
+        const response = await fetch(httpsUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
             }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return {
+                quote: data.content,
+                author: data.author
+            };
         }
     } catch (error) {
-        console.error('Error fetching quote:', error);
-        const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
-        return {
-            quote: randomFallback.content,
-            author: randomFallback.author
-        };
+        console.warn('HTTPS fetch failed:', error);
     }
+
+    console.log('Using fallback quotes');
+    const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+    return {
+        quote: randomFallback.content,
+        author: randomFallback.author
+    };
 }
 
 function displayQuote(quoteData) {
@@ -249,7 +253,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const refreshButton = document.getElementById('refresh-quote');
     if (refreshButton) {
-        refreshButton.addEventListener('click', async () => {
+        refreshButton.addEventListener('click', async (e) => {
+            e.preventDefault(); // Prevent any default button behavior
             refreshButton.classList.add('rotating');
             const newQuote = await fetchQuote();
             displayQuote(newQuote);
