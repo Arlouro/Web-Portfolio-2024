@@ -156,9 +156,7 @@ function togglePlay(event) {
 }
 
 // Quotes Functionality ############################################
-const QUOTES_API = 'https://api.quotable.io/random';
-
-const fallbackQuotes = [
+const quotes = [
     {
         content: "Design is not just what it looks like and feels like. Design is how it works.",
         author: "Steve Jobs"
@@ -178,6 +176,18 @@ const fallbackQuotes = [
     {
         content: "The details are not the details. They make the design.",
         author: "Charles Eames"
+    },
+    {
+        content: "Every great design begins with an even better story.",
+        author: "Lorinda Mamo"
+    },
+    {
+        content: "Design is intelligence made visible.",
+        author: "Alina Wheeler"
+    },
+    {
+        content: "User experience is not about the inner workings of a product but rather how it works on the outside.",
+        author: "Steve Krug"
     }
 ];
 
@@ -194,49 +204,29 @@ function initializeQuotes() {
             <i class="fas fa-sync-alt"></i>
         </button>
     `;
+
+    displayRandomQuote();
 }
 
-async function fetchQuote(retries = 2) {
-    try {
-        const httpsUrl = 'https://api.quotable.io/random';
-        const response = await fetch(httpsUrl, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            return {
-                quote: data.content,
-                author: data.author
-            };
-        }
-    } catch (error) {
-        console.warn('HTTPS fetch failed:', error);
-    }
-
-    console.log('Using fallback quotes');
-    const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
-    return {
-        quote: randomFallback.content,
-        author: randomFallback.author
-    };
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
 }
 
-function displayQuote(quoteData) {
+function displayRandomQuote() {
     const quoteElement = document.getElementById('quote');
     const authorElement = document.getElementById('quote-author');
     
     if (!quoteElement || !authorElement) return;
 
+    const { content, author } = getRandomQuote();
+
     quoteElement.classList.add('fade-out');
     authorElement.classList.add('fade-out');
 
     setTimeout(() => {
-        quoteElement.textContent = `"${quoteData.quote}"`;
-        authorElement.textContent = `- ${quoteData.author}`;
+        quoteElement.textContent = `"${content}"`;
+        authorElement.textContent = `- ${author}`;
         
         quoteElement.classList.remove('fade-out');
         authorElement.classList.remove('fade-out');
@@ -245,19 +235,15 @@ function displayQuote(quoteData) {
     }, 300);
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     initializeQuotes();
-    
-    const quoteData = await fetchQuote();
-    displayQuote(quoteData);
 
     const refreshButton = document.getElementById('refresh-quote');
     if (refreshButton) {
-        refreshButton.addEventListener('click', async (e) => {
-            e.preventDefault(); // Prevent any default button behavior
+        refreshButton.addEventListener('click', (e) => {
+            e.preventDefault();
             refreshButton.classList.add('rotating');
-            const newQuote = await fetchQuote();
-            displayQuote(newQuote);
+            displayRandomQuote();
             setTimeout(() => {
                 refreshButton.classList.remove('rotating');
             }, 1000);
