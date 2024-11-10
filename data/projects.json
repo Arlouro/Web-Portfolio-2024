@@ -7,7 +7,21 @@
       "role": "Team Lead & UX/UI Designer & Frontend Developer",
       "technologies": ["HTML5", "CSS", "JavaScript", "React", "Figma"],
       "status": "Finished",
-      "link": "https://github.com/project1"
+      "learnings": [
+          "Implemented agile development methodologies",
+          "Led a team of 5 developers/designers",
+          "Designed and implemented responsive UI"
+      ],
+      "gallery": [
+          {
+              "url": "./assets/images/qrkup-1.png",
+              "caption": "Landing Page Design"
+          },
+          {
+              "url": "./assets/images/qrkup-2.png",
+              "caption": "User Dashboard"
+          }
+      ]
     },
     {
       "title": "MuscleUp!",
@@ -16,7 +30,21 @@
       "role": "UX/UI Designer",
       "technologies": ["Figma", "Adobe XD", "React", "Ruby on Rails"],
       "status": "Finished",
-      "link": "https://github.com/project2"
+      "learnings": [
+          "Designed a user-friendly interface",
+          "Created a responsive design",
+          "Developed a comprehensive style guide"
+      ],
+      "gallery": [
+          {
+              "url": "./assets/images/muscleup-1.png",
+              "caption": "Landing Page Design"
+          },
+          {
+              "url": "./assets/images/muscleup-2.png",
+              "caption": "User Dashboard"
+          }
+      ]
     },
     {
       "title": "Googol",
@@ -25,7 +53,21 @@
       "role": "Full Stack Developer & UX/UI Designer",
       "technologies": ["JavaScript", "Java", "SpringBoot", "RestAPI", "HTML5", "CSS"],
       "status": "Finished",
-      "link": "https://github.com/project3"
+      "learnings": [
+          "Developed a full-stack application",
+          "Implemented a search engine",
+          "Designed a user-friendly interface"
+      ],
+      "gallery": [
+          {
+              "url": "./assets/images/googol-1.png",
+              "caption": "Landing Page Design"
+          },
+          {
+              "url": "./assets/images/googol-2.png",
+              "caption": "Search Results"
+          }
+      ]
     },
     {
       "title": "Badge Master",
@@ -34,7 +76,21 @@
       "role": "UX/UI Designer",
       "technologies": ["React", "JavaScript", "HTML5", "CSS", "Figma"],
       "status": "Finished",
-      "link": ""
+      "learnings": [
+          "Designed a user-friendly interface",
+          "Developed a comprehensive style guide",
+          "Created a responsive design"
+      ],
+      "gallery": [
+          {
+              "url": "./assets/images/badge-master-1.png",
+              "caption": "Landing Page Design"
+          },
+          {
+              "url": "./assets/images/badge-master-2.png",
+              "caption": "User Dashboard"
+          }
+      ]
     },
     {
       "title": "Canoe Manager",
@@ -42,7 +98,22 @@
       "description": "Canoe Manager is set to become the official app for Clube Fluvial de Coimbra (CFC), replacing the club's outdated management system. This app will empower coaches to effectively manage their teams and athletes, while also providing athletes with tools to track their statistics and training progress. Additionally, Canoe Manager will facilitate the management of financial aspects for each team, ensuring a comprehensive and streamlined solution for all club operations. I will be responsible for the design of the application and website, and will also contribute to the frontend implementation of the design. ",
       "role": "UX/UI Designer & Frontend Developer",
       "technologies": ["React", "JavaScript", "NextJS", "HTML5", "CSS", "Figma"],
-      "status": "In Progress"
+      "status": "In Progress",
+      "learnings": [
+          "Designed a user-friendly interface",
+          "Developed a comprehensive style guide",
+          "Created a responsive design"
+      ],
+      "gallery": [
+          {
+              "url": "./assets/images/canoe-manager-1.png",
+              "caption": "Landing Page Design"
+          },
+          {
+              "url": "./assets/images/canoe-manager-2.png",
+              "caption": "User Dashboard"
+          }
+      ]
     }
   ]
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="nav-header">
+        <div class="nav-container">
+            <button onclick="history.back()" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Projects
+            </button>
+        </div>
+    </header>
+
+    <div class="project-details-container">
+        <section class="project-hero fade-in">
+            <div class="project-image-container">
+                <img id="project-image" class="project-image" src="/api/placeholder/800/600" alt="Project Image">
+            </div>
+            
+            <div class="project-info">
+                <h1 id="project-title" class="project-title"></h1>
+                <p id="project-role" class="project-role"></p>
+                
+                <div class="status-badge">
+                    <i class="fas fa-check-circle"></i>
+                    Completed Project
+                </div>
+
+                <div class="project-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Features Implemented</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Days to Complete</div>
+                    </div>
+                </div>
+
+                <p id="project-description" class="project-description"></p>
+                
+                <div class="tech-section">
+                    <h2 class="section-title">Technologies Used</h2>
+                    <div id="project-tech" class="project-tech"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section fade-in">
+            <h2 class="section-title">Project Gallery</h2>
+            <div id="project-gallery" class="gallery-grid"></div>
+        </section>
+    </div>
+
+    <script src="js/project-details.js"></script>
+</body>
+</html>

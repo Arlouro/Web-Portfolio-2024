@@ -18,7 +18,21 @@ const fallbackProjects = {
             role: "Team Lead & UX/UI Designer & Frontend Developer",
             technologies: ["HTML5", "CSS", "JavaScript", "React", "Figma"],
             status: "Finished",
-            link: "https://github.com/project1"
+            learnings: [  
+                "Implemented agile development methodologies",
+                "Led a team of 5 developers/designers",
+                "Designed and implemented responsive UI"
+            ],
+            gallery: [
+                {
+                    "url": "./assets/images/qrkup-1.png",
+                    "caption": "Landing Page Design"
+                },
+                {
+                    "url": "./assets/images/qrkup-2.png",
+                    "caption": "User Dashboard"
+                }
+            ]
         }
     ]
 };
@@ -131,9 +145,9 @@ function createProjectsContainer() {
                 <p id="project-role"></p>
                 <div class="project-description" id="project-description"></div>
                 <div class="project-tech" id="project-tech"></div>
-                <a href="#" class="project-link" id="project-link" target="_blank">
+                <button id="project-view-btn" class="project-view-btn">
                     View Project <i class="fas fa-external-link-alt"></i>
-                </a>
+                </button>
             </div>
         </div>
     `;
@@ -146,6 +160,7 @@ function setupProjectControls() {
     const playBtn = document.getElementById('playBtn');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const viewProjectBtn = document.getElementById('project-view-btn');
 
     playBtn.addEventListener('click', () => {
         isPlaying = !isPlaying;
@@ -169,7 +184,51 @@ function setupProjectControls() {
             currentProjectIndex + 1;
         updateProjectDisplay();
     });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            currentProjectIndex = (currentProjectIndex === 0) ? 
+                projects.length - 1 : 
+                currentProjectIndex - 1;
+            updateProjectDisplay();
+        } else if (e.key === 'ArrowRight') {
+            currentProjectIndex = (currentProjectIndex === projects.length - 1) ? 
+                0 : 
+                currentProjectIndex + 1;
+            updateProjectDisplay();
+        }
+    });
+
+    viewProjectBtn.addEventListener('click', () => {
+        window.location.href = `project-details.html?index=${currentProjectIndex}`;
+    });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectIndex = urlParams.get('index');
+
+    if (projectIndex !== null) {
+        const project = projects[projectIndex];
+
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-image').src = project.image;
+        document.getElementById('project-description').textContent = project.description;
+        document.getElementById('project-role').textContent = project.role;
+
+        const techContainer = document.getElementById('project-tech');
+        techContainer.innerHTML = project.technologies.map(tech => 
+            `<span class="tech-tag">${tech}</span>`
+        ).join('');
+
+        const galleryContainer = document.getElementById('project-gallery');
+        galleryContainer.innerHTML = project.gallery.map(image => 
+            `<img src="${image.url}" alt="${image.caption}">`
+        ).join('');
+    } else {
+        console.error('Project index not found in URL');
+    }
+});
 
 function updateProjectDisplay() {
     if (!projects.length) return;
@@ -180,7 +239,6 @@ function updateProjectDisplay() {
     document.getElementById('project-title').textContent = project.title;
     document.getElementById('project-role').textContent = project.role;
     document.getElementById('project-description').textContent = project.description;
-    document.getElementById('project-link').href = project.link;
     
     const techContainer = document.getElementById('project-tech');
     techContainer.innerHTML = project.technologies.map(tech => 
