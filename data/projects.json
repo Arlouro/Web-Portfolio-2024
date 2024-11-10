@@ -14,11 +14,11 @@
       ],
       "gallery": [
           {
-              "url": "./assets/images/qrkup-1.png",
+              "url": "./assets/images/qrkup-1.svg",
               "caption": "Landing Page Design"
           },
           {
-              "url": "./assets/images/qrkup-2.png",
+              "url": "./assets/images/qrkup-2.svg",
               "caption": "User Dashboard"
           }
       ]

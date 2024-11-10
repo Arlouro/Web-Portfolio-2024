@@ -908,10 +908,6 @@ footer i {
 }
 
 @media (max-width: 768px) {
-  body {
-      padding: 1rem;
-  }
-
   .nav-header {
       padding: 1rem;
       margin: -1rem -1rem 1rem -1rem;
